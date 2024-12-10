@@ -16,13 +16,7 @@
     "@repo/typescript-config": "workspace:*"
   },
   "exports": {
-    "./recoil": {
-      "import": "./src/recoil/index.ts",
-      "require": "./src/recoil/index.ts"
-    },
-    "./useBalance": {
-      "import": "./src/hooks/useBalance.ts",
-      "require": "./src/hooks/useBalance.ts"
-    }
+    "./recoil": "./src/recoil/index.ts",
+    "./useBalance": "./src/hooks/useBalance.ts"
   }
 }

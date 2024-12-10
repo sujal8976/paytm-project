@@ -1,20 +1,12 @@
-import { Button } from "@repo/ui/components/ui/button";
-import { ToastDemo } from "../components/toastDemo";
-import X from "@repo/ui/icons/X";
-import Balance from "../components/balance";
-import Page from "../components/Appbar"
+import { getServerSession } from "next-auth";
+import { redirect } from 'next/navigation'
+import { authOptions } from "./lib/auth";
 
-export default function Home() {
-  return (
-    <div>
-      <Page/>
-      <div className="">Hey there</div>
-      <Button className="" variant={"destructive"}>
-        click
-      </Button>
-      <ToastDemo />
-      <X/>
-      <Balance/>
-    </div>
-  );
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+  if (session?.user) {
+    redirect('/dashboard')
+  } else {
+    redirect('/api/auth/signin')
+  }
 }
